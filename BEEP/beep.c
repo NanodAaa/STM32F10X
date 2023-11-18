@@ -1,6 +1,5 @@
 #include "beep.h"
 
-
 // 初始化蜂鸣器
 void BeepInitial(TIfNPN ifNPN)
 {
@@ -37,11 +36,6 @@ void BeepBeep(TIfBeepEnable ifBeep, TIfNPN ifNPN)
 		else	GPIO_SetBits(BUZZER_GPIO_X, BUZZER_GPIO_PIN);
 	}
 }
-
-
-
-
-
 
 
 
