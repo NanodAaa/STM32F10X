@@ -1,6 +1,5 @@
 #include "lcd_disp.h"
 
-
 // 中文汉字储存缓冲区	
 // 每行12个
 // 最多4行
@@ -101,7 +100,6 @@ static BYTE g_byChineseBuf[CHINESE_BUF_SIZE + 1][CHINESE_CHARA_SIZE] =
  0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00},	/*50 清屏数据*/
 };
 
-
 //	数字储存缓冲区
 // 最后一位为清屏数据
 // 包括英文
@@ -141,7 +139,6 @@ static BYTE g_byDigitBuf[DIGIT_BUF_SIZE + 1][DIGIT_CHARA_SIZE] =
 		
 	{0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00},	/* 29 清屏数据*/
 };
-
 
 // 图片1储存区
 static BYTE g_byBMP1Buf[BMP_BUF_SIZE][BMP_CHARA_SIZE] = 
@@ -242,9 +239,7 @@ static BYTE g_byBMP1Buf[BMP_BUF_SIZE][BMP_CHARA_SIZE] =
 {0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80},
 {0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80},
 {0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0xFF},/*"笑脸",0*/
-
 };
-	
 
 // 图片2储存区
 BYTE g_byBMP2Buf[BMP_BUF_SIZE][BMP_CHARA_SIZE] = 
@@ -347,7 +342,6 @@ BYTE g_byBMP2Buf[BMP_BUF_SIZE][BMP_CHARA_SIZE] =
 {0xFF,0x00,0x00,0xFF,0x1E,0x70,0xC0,0x00,0xF0,0xB0,0xF0,0xC0,0x70,0x70,0xC0,0x80},/*"菜单",0*/
 };
 
-
 // ds19264写指令
 void DS19264WriteCmd(BYTE byCommand, TDs19264ScrnSel ds19264ScrnSel)
 {
@@ -384,7 +378,6 @@ void DS19264WriteCmd(BYTE byCommand, TDs19264ScrnSel ds19264ScrnSel)
 
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;	// 模式设置为上拉输入，读取LCD引脚电平
 	GPIO_Init(LCDDB7_GPIO_X, &GPIO_InitStructure);
-	
 }
 
 
@@ -419,7 +412,6 @@ void Ds19264WriteData(BYTE byDisplyData, TDs19264ScrnSel ds19264ScrnSel)
 
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;	// 模式设置为上拉输入，读取LCD引脚电平
 	GPIO_Init(LCDDB7_GPIO_X, &GPIO_InitStructure);		
-	
 }
 
 
@@ -430,7 +422,6 @@ void Ds19264WriteData(BYTE byDisplyData, TDs19264ScrnSel ds19264ScrnSel)
 void Ds19264WriteChar(UCHAR uiDispLine, UCHAR uiDispRow, TDs19264ScrnSel ds19264ScrnSel, BYTE byChar)
 {
 	Ds19264DispLocationSet(uiDispLine, uiDispRow, ds19264ScrnSel); // 设置显示位置、显示屏幕
-
 	Ds19264WriteData(byChar, ds19264ScrnSel);	// 写入字符
 }
 
@@ -557,54 +548,7 @@ void Ds19264DisplayBMP(BYTE* p_byBMP)
 		for(uiCharaCount = 0; uiCharaCount < BMP_CHARA_SIZE; uiCharaCount++)
 		{
 			byBMPData = *(p_byBMP + (uiBufCount * BMP_CHARA_SIZE) + uiCharaCount);	// 图片缓冲区寻址
-			
 			Ds19264WriteData(byBMPData, ds19264ScrnSel);	// 写入图片数据
 		}
-		
 	}
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
