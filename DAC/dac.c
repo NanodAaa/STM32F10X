@@ -1,6 +1,5 @@
 #include "dac.h"
 
-
 // DAC初始化
 // DAC_Channel -- 初始化的通道号
 // DAC_Align -- 数据对齐模式
@@ -72,34 +71,3 @@ void DacSetOutputVal(uint32_t DAC_Channel, uint32_t DAC_Align, uint16_t uiDacTar
 		DAC_SetChannel2Data(DAC_Align, uiDacVal);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
