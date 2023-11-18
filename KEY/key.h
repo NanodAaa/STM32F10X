@@ -6,7 +6,6 @@
 #include "stm32f10x.h"
 #include "delay.h"
 
-
 // 按键输入引脚定义
 #define WKUP GPIO_ReadInputDataBit(WKUP_GPIO_X, WKUP_GPIO_PIN)
 #define KEY0 GPIO_ReadInputDataBit(KEY0_GPIO_X, KEY0_GPIO_PIN)
@@ -14,7 +13,6 @@
 #define KEY2 GPIO_ReadInputDataBit(KEY2_GPIO_X, KEY2_GPIO_PIN)
 #define KEY3 GPIO_ReadInputDataBit(KEY3_GPIO_X, KEY3_GPIO_PIN)
 #define KEY4 GPIO_ReadInputDataBit(KEY4_GPIO_X, KEY4_GPIO_PIN)
-
 
 // 按键序号
 typedef enum _tagKeyNum
@@ -27,7 +25,6 @@ typedef enum _tagKeyNum
 	KEY_NUM_KEY4,			   // 按键4
 }TKeyNum;
 
-
 // 单一按键状态
 typedef enum _tagSingleKeyState
 {
@@ -36,14 +33,12 @@ typedef enum _tagSingleKeyState
 	SINGLE_KEYSTATE_PRES,				// 按下状态
 }TSingleKeyState;
 
-
 // 是否默认上拉
 typedef enum _tagIfIPU
 {
 	IPU_TRUE = 0,
 	IPU_FALSE,
 }TIfIPU;
-
 
 
 // 全局按键状态
@@ -58,14 +53,9 @@ typedef enum _tagGeneralKeyState
 	GENERAL_KEYSTATE_NOKEYPRES			// 无按键按下
 }TGeneralKeyState;
 
-
-
 void SingleKeyInitial(GPIO_TypeDef * GPIOx, uint16_t GPIO_Pin, uint32_t RCC_APB2Periph, TIfIPU ifIPU);
 TSingleKeyState SingleKeyScan(TKeyNum keyNum, TIfIPU ifIPU);
 TGeneralKeyState GenKeyScan(void);
 void KeyDebounce(void);
 
-
-
 #endif
-
