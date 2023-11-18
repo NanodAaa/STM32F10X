@@ -18,46 +18,7 @@ void TIM3Initial(uint16_t uiPeriod, uint16_t uiPrescaler)
 	TIM_TimeBaseStructure.TIM_Period 		= uiPeriod - 1;
 	TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
 	TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);
-
-	// 允许更新中断
-	TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
-
-	// 使能TIM3
-	TIM_Cmd(TIM3, ENABLE);
 	
+	TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);	// 允许更新中断	
+	TIM_Cmd(TIM3, ENABLE);	// 使能TIM3
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
