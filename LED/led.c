@@ -1,7 +1,5 @@
 #include "led.h"
 
-
-
 GPIO_InitTypeDef GPIO_InitStructure;	// GPIO初始化结构体
 
 
@@ -17,8 +15,7 @@ void SingleLEDInitial(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, uint32_t RCC_APB2P
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOx, &GPIO_InitStructure);
 
-	GPIO_SetBits(GPIOx, GPIO_Pin);	// 默认输出高电平
-	
+	GPIO_SetBits(GPIOx, GPIO_Pin);	// 默认输出高电平	
 }
 
 
@@ -35,13 +32,11 @@ void SwitchLEDState(TLednum ledNum, TLedState ledState)
 			if(ledState == LED_STATE_ON)	
 			{	
 				GPIO_ResetBits(LED0_GPIO_X, LED0_GPIO_PIN);
-			}
-				
+			}				
 			else if(ledState == LED_STATE_OFF)	
 			{
 				GPIO_SetBits(LED0_GPIO_X, LED0_GPIO_PIN);
-			}
-
+			}			
 			break;
 		}
 		
@@ -60,12 +55,6 @@ void SwitchLEDState(TLednum ledNum, TLedState ledState)
 			}
 			
 			break;
-		}
-		
+		}		
 	}
 }
-
-
-
-
-
