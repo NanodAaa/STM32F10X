@@ -1,13 +1,11 @@
 #ifndef _LCD_MENU_H_
 #define _LCD_MENU_H_
 
-
 #include "ds19264.h"
 #include "lcd_disp.h"
 #include "key.h"
 #include "beep.h"
 #include "delay.h"
-
 
 // 状态机状态
 typedef enum _tagMenuStateMachineStat
@@ -18,7 +16,6 @@ typedef enum _tagMenuStateMachineStat
 	STATMACHINE_CLOCK_SET,
 }TMenuStateMachineStat;
 
-
 // 测试板运行模式
 // 模式1 —— ACC
 // 模式2 —— B+
@@ -27,7 +24,6 @@ typedef enum _tagRunningMode
 	RUNNING_MODE_ACC = 0,
 	RUNNING_MODE_BP,
 }TRunningMode;
-
 
 // 测试板当前状态
 // Ton  -- 开机时间
@@ -39,7 +35,6 @@ typedef enum _tagRunningState
 	RUNNING_STATE_IDLE,
 	RUNNING_STATE_WARNING,
 }TRunningState;
-
 
 // 按键对应文字
 // 按键 —— 开始
@@ -66,7 +61,6 @@ typedef enum _tagKeyChara
 	KEYCHARA_ENTER,
 }TKeyChara;
 
-
 // 当前显示的菜单
 // 主界面
 // 设置界面
@@ -82,7 +76,6 @@ typedef enum _tagMenuDisplay
 	MENU_DISPLAY_OPTION_CLOCK,
 }TMenuDisplay;
 
-
 // 指针位置
 typedef enum _tagMenuCoursePos
 {
@@ -90,7 +83,6 @@ typedef enum _tagMenuCoursePos
 	COURSE_POS_SECOND,
 	COURSE_POS_THIRD,
 }TMenuCoursePos;
-
 
 // 主界面数据结构体
 // 测试板运行模式，默认ACC
@@ -137,11 +129,6 @@ typedef struct _tagOptionClockData
 }SOptionClockData;
 */
 
-
-
-
-
-
 void MenuDispBeginPic(void);
 void MenuInitial(void);
 void MenuStateMachine(void);
@@ -152,16 +139,10 @@ void Menu_Option_RunningMode(void);
 void Menu_Option_Sequential(void);
 void Menu_Option_Clock(void);
 
-
 void CourseMoveUp(void);
 void CourseMoveDown(void);
 
-
-
-
-
 /*
-
 switch(g_KeyState)
 			{
 				// KEY1
@@ -197,34 +178,5 @@ switch(g_KeyState)
 			}
 
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif
