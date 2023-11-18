@@ -1,13 +1,11 @@
 #include "lcd_menu.h"
 
-
 extern TGeneralKeyState g_KeyState;		// 全局按键状态，默认无按下
 extern BYTE g_byBMP2Buf;
 
 static TMenuStateMachineStat g_MenuStateMachineStat;	// 状态机状态
 static TMenuDisplay  g_MenuDisplay;	// 当前显示的菜单，默认主菜单
 static SMenuMainData  MenuMainData;
-
 
 // 系统开机图
 // 上电即显示
@@ -41,7 +39,6 @@ void MenuInitial(void)
 void MenuStateMachine(void)
 {
 	// 扫描按键状态给 g_KeyState 在Process10Ms中完成
-
 	switch(g_MenuStateMachineStat)
 	{
 		// 主菜单
@@ -200,18 +197,11 @@ void MenuStateMachine(void)
 					}
 				}
 			}
-			
 		}
-
 //		DS19264_ALL_SCREEN_CLEAN		// 清屏
-		
 	}
-
-
 	// 设置菜单
 //	switch()
-	
-	
 }
 
 
@@ -250,11 +240,9 @@ void MenuDisplay(void)
 }
 
 
-
 // 主界面
 void Menu_Main(void)
 {
-	
 	Ds19264WriteChinese(0, 0, LEFT_SCRN, 22);	// “模”
 	Ds19264WriteChinese(0, 1, LEFT_SCRN, 23);	// “式”
 	Ds19264WriteChinese(0, 2, LEFT_SCRN, 35);	// '：'
@@ -310,7 +298,6 @@ void Menu_Main(void)
 }
 
 
-
 // 设置菜单界面
 void Menu_Option(void)
 {
@@ -329,7 +316,6 @@ void Menu_Option(void)
 	Ds19264WriteChinese(2, 1, LEFT_SCRN, 35);	// “间”
 	Ds19264WriteChinese(2, 2, LEFT_SCRN, 6);	// “设”
 	Ds19264WriteChinese(2, 3, LEFT_SCRN, 7);	// “置”
-
 
 	// 显示运行模式
 	if(MenuMainData.RunningMode == RUNNING_MODE_ACC)
@@ -372,12 +358,7 @@ void Menu_Option(void)
 			break;
 		}
 	}
-
-
-	
-	
 }
-
 
 
 // 设置——运行模式
@@ -385,7 +366,6 @@ void Menu_Option_RunningMode(void)
 {
 	
 }
-
 
 
 // 设置——时序设置
@@ -432,15 +412,12 @@ void Menu_Option_Sequential(void)
 			break;
 		}
 	}
-	
 }
-
 
 
 // 设置——时间设置
 void Menu_Option_Clock(void)
 {
-	
 }
 
 
@@ -470,10 +447,6 @@ void CourseMoveDown(void)
 		MenuMainData.MenuCoursePos = COURSE_POS_FIRST;
 	}
 }
-
-
-
-
 
 
 
