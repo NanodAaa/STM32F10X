@@ -5,7 +5,6 @@
 #include "NANODA.h"
 #include "board.h"
 
-
 //***************LED序号***************
 typedef enum _tagLedNum
 {
@@ -13,7 +12,6 @@ typedef enum _tagLedNum
 	LED_NUM_LED1,		// LED1
 	
 }TLednum;
-
 
 //***************LED状态***************
 typedef enum _tagLedState
@@ -23,16 +21,7 @@ typedef enum _tagLedState
 	
 }TLedState;
 
-
-
 void SingleLEDInitial(GPIO_TypeDef * GPIOx, uint16_t GPIO_Pin, uint32_t RCC_APB2Periph);
 void SwitchLEDState(TLednum ledNum, TLedState ledState);
 
-
-
-
-
-
-
 #endif
-
