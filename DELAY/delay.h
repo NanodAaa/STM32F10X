@@ -5,38 +5,6 @@
 #include "board.h"
 #include "NANODA.h"
 
-
 void DelayInitial(void);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif
