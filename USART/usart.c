@@ -1,7 +1,6 @@
 #include "usart.h"
 #include "stdio.h"
 
-
 BYTE USART_RX_BUF[USART_RX_BUF_SIZE]; // 串口发送缓冲区
 BYTE USART_TX_BUF[USART_TX_BUF_SIZE]; // 串口接收缓冲区
 
@@ -10,7 +9,6 @@ BYTE USART_TX_BUF[USART_TX_BUF_SIZE]; // 串口接收缓冲区
 // 在main.c中配置中断
 void UsartInitial(TUSARTNum USARTnum, uint32_t uiBaudRate)
 {
-
 	// 串口初始化
 	USART_InitTypeDef USART_InitStructure;	// 串口初始化配置结构体
 	GPIO_InitTypeDef  GPIO_InitStructure;	// GPIO初始化配置结构体
@@ -63,12 +61,10 @@ void UsartInitial(TUSARTNum USARTnum, uint32_t uiBaudRate)
 		{
 			RCC_APB2PeriphClockCmd(RCC_APB1Periph_USART3 | RCC_APB2Periph_GPIOB, ENABLE);
 			USART_Init(USART3, &USART_InitStructure);
-			USART_Cmd(USART3, ENABLE);
-			
+			USART_Cmd(USART3, ENABLE);			
 			break;
 		}
 	}
-	
 }
 
 
@@ -80,12 +76,9 @@ void DEBUGOutput(TUSARTNum USARTNum, BYTE* p_uiData)
 	
 	switch(USARTNum)
 	{
-
 		case USART_NUM_1:
 		{
-			USART_SendData(USART1, USART_RX_BUF);
-			
-			break;
+			USART_SendData(USART1, USART_RX_BUF);	break;
 		}
 		case USART_NUM_2:
 		{
@@ -94,52 +87,6 @@ void DEBUGOutput(TUSARTNum USARTNum, BYTE* p_uiData)
 		case USART_NUM_3:
 		{
 			break;
-		}
-		
+		}		
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
