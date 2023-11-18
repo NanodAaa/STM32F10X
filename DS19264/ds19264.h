@@ -10,7 +10,6 @@
 #define LCD_CS_DESELECT_ALL		GPIO_SetBits(LCDCS1_GPIO_X, LCDCS1_GPIO_PIN); \
 									GPIO_SetBits(LCDCS2_GPIO_X, LCDCS2_GPIO_PIN); \
 									GPIO_SetBits(LCDCS3_GPIO_X, LCDCS3_GPIO_PIN);
-
  
 // LCD19264-5
 #ifdef BOARD_ALIENTEK_STM32F103ZE
@@ -60,7 +59,6 @@
 #define LCDCS3_RCC_APB2PERIPH	RCC_APB2Periph_GPIOA
 #endif
 
-
 #ifdef BOARD_AUTOONOFF_STM32F103RCT6
 #define LCDDB0_GPIO_X			GPIOC
 #define LCDDB0_GPIO_PIN			GPIO_Pin_0
@@ -108,7 +106,6 @@
 #define LCDCS3_RCC_APB2PERIPH	RCC_APB2Periph_GPIOA
 #endif
 
-
 // 控制指令
 #define SCREEN_ON	0x3f	// 显示屏开
 #define SCREEN_OFF	0x3e	// 显示屏关
@@ -143,7 +140,6 @@
 										Ds19264StartLineSet(0, MID_SCRN);	\
 										Ds19264StartLineSet(0, RIGHT_SCRN);
 
-
 // ds19264状态
 typedef enum _tagDs19264Status
 {
@@ -158,7 +154,6 @@ typedef enum _tagDs19264Status
 	DS19264_NOW_NORMAL,
 }TDs19264Stat;
 
-
 // ds19264屏幕选择
 typedef enum _tagDs19264SelectScreen
 {
@@ -166,9 +161,6 @@ typedef enum _tagDs19264SelectScreen
 	MID_SCRN,
 	RIGHT_SCRN,
 }TDs19264ScrnSel;
-
-
-
 
 void Ds19264Initial(void);
 TDs19264Stat Ds19264ReadStatus(TDs19264Stat ds19264Status, TDs19264ScrnSel ds19264ScrnSel);
@@ -181,8 +173,5 @@ void Ds19264StartLineSet(UCHAR ulStartLine, TDs19264ScrnSel ds19264ScrnSel);
 void Ds19264DispLocationSet(UCHAR uiDispLine, UCHAR uiDispRow, TDs19264ScrnSel ds19264ScrnSel);
 void Ds19264CleanScreen(TDs19264ScrnSel ds19264ScrnSel);
 void Ds19264CSCtrl(TDs19264ScrnSel ds19264ScrnSel);
-
-
-
 
 #endif
