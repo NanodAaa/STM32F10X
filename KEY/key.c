@@ -1,10 +1,8 @@
 #include "key.h"
 #include "led.h"
 
-
 extern GPIO_InitTypeDef GPIO_InitStructure;	// GPIO初始化结构体
 extern uint32_t g_uiCount10ms;	// 计划用于按键消抖延时
-
 
 
 // 初始化按键
@@ -25,7 +23,6 @@ void SingleKeyInitial(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, uint32_t RCC_APB2P
 		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
 	}
 	GPIO_Init(GPIOx, &GPIO_InitStructure);
-	
 }
 
 
@@ -70,7 +67,6 @@ TSingleKeyState SingleKeyScan(TKeyNum keyNum, TIfIPU ifIPU)
 			break;
 		}
 
-		
 		// 按键KEY0
 		case KEY_NUM_KEY0:
 		{
@@ -134,7 +130,6 @@ TSingleKeyState SingleKeyScan(TKeyNum keyNum, TIfIPU ifIPU)
 				}
 				else	return SINGLE_KEYSTATE_UNKNOWN;
 			}		
-
 			break;
 		}
 
@@ -168,7 +163,6 @@ TSingleKeyState SingleKeyScan(TKeyNum keyNum, TIfIPU ifIPU)
 				}
 				else	return SINGLE_KEYSTATE_UNKNOWN;
 			}		
-
 			break;
 		}
 
@@ -201,7 +195,6 @@ TSingleKeyState SingleKeyScan(TKeyNum keyNum, TIfIPU ifIPU)
 				}
 				else	return SINGLE_KEYSTATE_UNKNOWN;
 			}		
-
 			break;
 		}
 
@@ -234,15 +227,11 @@ TSingleKeyState SingleKeyScan(TKeyNum keyNum, TIfIPU ifIPU)
 				}
 				else	return SINGLE_KEYSTATE_UNKNOWN;
 			}		
-			
 			break;
 		}
 		#endif
-		
 	}
-
 	return SINGLE_KEYSTATE_UNKNOWN;
-	
 }
 
 
@@ -290,5 +279,3 @@ void KeyDebounce(void)
 	while(g_uiCount10ms - uiCountCurrent > 0 && g_uiCount10ms - uiCountCurrent == 50);
 
 }
-
-
