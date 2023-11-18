@@ -79,14 +79,12 @@ void Ds19264Initial(void)
 		&& DS19264_NOW_NORMAL != Ds19264ReadStatus(STATUS_CHECK_RESET, RIGHT_SCRN));
 
 	DS19264_ALL_SCREEN_CLEAN	// 清屏
-	
 }
 
 
 // ds19264读取状态字
 TDs19264Stat Ds19264ReadStatus(TDs19264Stat ds19264Status, TDs19264ScrnSel ds19264ScrnSel)
 {
-
 	BYTE byStatus = DS19264ReadCmd(ds19264ScrnSel);	// 获取LCDDB信息
 
 	switch(ds19264Status)
@@ -112,10 +110,7 @@ TDs19264Stat Ds19264ReadStatus(TDs19264Stat ds19264Status, TDs19264ScrnSel ds192
 			else
 				return DS19264_NOW_NORMAL;
 	}
-
-	
 	return DS19264_NOW_NORMAL;
-	
 }
 
 
@@ -148,9 +143,6 @@ BYTE DS19264ReadCmd(TDs19264ScrnSel ds19264ScrnSel)
 	return byTemp;
 	
 }
-
-
-
 
 
 // Ds19264读取显示数据
@@ -190,11 +182,8 @@ BYTE Ds19264ReadData(TDs19264ScrnSel ds19264ScrnSel)
 BYTE Ds19264ReadChar(UCHAR uiDispLine, UCHAR uiDispRow, TDs19264ScrnSel ds19264ScrnSel)
 {
 	BYTE byChar;
-
 	Ds19264DispLocationSet(uiDispLine, uiDispRow, ds19264ScrnSel);	// 设置读取地址
-
 	byChar = Ds19264ReadData(ds19264ScrnSel);	// 读取字符
-
 	return byChar;	
 }
 
@@ -204,7 +193,6 @@ BYTE Ds19264ReadChar(UCHAR uiDispLine, UCHAR uiDispRow, TDs19264ScrnSel ds19264S
 void Ds19264StartLineSet(UCHAR ulStartLine, TDs19264ScrnSel ds19264ScrnSel)
 {
 	while(DS19264_NOW_BUSY == Ds19264ReadStatus(STATUS_CHECK_BUSY, ds19264ScrnSel));	// 检测繁忙
-
 	DS19264WriteCmd((0xc0 + ulStartLine), ds19264ScrnSel);	// 设置起始行
 }
 
@@ -216,7 +204,6 @@ void Ds19264StartLineSet(UCHAR ulStartLine, TDs19264ScrnSel ds19264ScrnSel)
 void Ds19264DispLocationSet(UCHAR uiDispLine, UCHAR uiDispRow, TDs19264ScrnSel ds19264ScrnSel)
 {
 	while(DS19264_NOW_BUSY == Ds19264ReadStatus(STATUS_CHECK_BUSY, ds19264ScrnSel));
-
 	DS19264WriteCmd((0xb8 + uiDispLine), ds19264ScrnSel);	// 设置行位置
 	DS19264WriteCmd((0x40 + uiDispRow),  ds19264ScrnSel);	// 设置列位置
 }
@@ -232,7 +219,6 @@ void Ds19264CleanScreen(TDs19264ScrnSel ds19264ScrnSel)
 	// 向所有DDRAM中写0x00
 	for(uiDispLineCount = 0; uiDispLineCount < DDRAM_DISPLINE_SIZE; uiDispLineCount++)
 	{
-
 		for(uiDispRowCount = 0; uiDispRowCount < DDRAM_DISPROW_SIZE; uiDispRowCount++)
 		{
 			Ds19264DispLocationSet(uiDispLineCount, uiDispRowCount, ds19264ScrnSel);	// 选择写入地址
@@ -240,7 +226,6 @@ void Ds19264CleanScreen(TDs19264ScrnSel ds19264ScrnSel)
 			Ds19264WriteData(SCREEN_CLEAN_BYTE, ds19264ScrnSel);	// 写入清屏数据
 		}
 	}
-	
 }
 
 
@@ -268,5 +253,4 @@ void Ds19264CSCtrl(TDs19264ScrnSel ds19264ScrnSel)
 			break;
 		}
 	}
-
 }
